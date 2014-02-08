@@ -57,7 +57,7 @@
 
 
 			var yScale = d3.scale.linear()
-							.domain([0, d3.max(dataset)])
+							.domain(d3.range(dataset.length))
 							.range([0, h]);
 			
 			//Create SVG element
