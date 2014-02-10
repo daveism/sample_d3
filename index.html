@@ -63,7 +63,10 @@
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
-						.attr("height", h);
+						.attr("height", h)
+						.attr("x", function(d, i) {
+							return xScale(i);
+							});
 
 			//Create bars
 			svg.selectAll("rect")
