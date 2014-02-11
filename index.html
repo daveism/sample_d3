@@ -68,6 +68,18 @@
 							return xScale(i);
 							});
 
+svg.selectAll("text")
+   .data(dataset)
+   .enter()
+   .append("text")
+   .attr("text-anchor", "middle")
+   .attr("x", function(d, i) {
+        return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+    })
+    .attr("y", function(d) {
+        return h - (d * 4) + 14;  //15 is now 14
+    });
+    
 			//Create bars
 			svg.selectAll("rect")
 			   .data(dataset)
@@ -112,17 +124,7 @@
 			   .on("click", function() {
 			   		sortBars();
 			   });
-svg.selectAll("text")
-   .data(dataset)
-   .enter()
-   .append("text")
-   .attr("text-anchor", "middle")
-   .attr("x", function(d, i) {
-        return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
-    })
-    .attr("y", function(d) {
-        return h - (d * 4) + 14;  //15 is now 14
-    });
+
 			//Define sort order flag
 			var sortOrder = false;
 			
