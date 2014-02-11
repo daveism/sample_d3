@@ -64,7 +64,12 @@
 						.append("svg")
 						.attr("width", w)
 						.attr("height", h);
-
+			//labels
+			svg.selectAll("text")
+			   .data(dataset)
+			   .enter()
+			   .append("text");
+			   
 			//Create bars
 			svg.selectAll("rect")
 			   .data(dataset)
