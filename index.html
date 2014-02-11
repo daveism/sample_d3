@@ -86,8 +86,6 @@
 			   .attr("fill", function(d) {
 					return "rgb(0, 0, " + (d * 10) + ")";
 			   })
-                           .text(d)
-                           .attr("text-anchor", "middle")
                            .on("mouseover", function(d) {
 
 					//Get this bar's x/y values, then augment for the tooltip
@@ -114,7 +112,17 @@
 			   .on("click", function() {
 			   		sortBars();
 			   });
-
+svg.selectAll("text")
+   .data(dataset)
+   .enter()
+   .append("text")
+   .attr("text-anchor", "middle")
+   .attr("x", function(d, i) {
+        return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+    })
+    .attr("y", function(d) {
+        return h - (d * 4) + 14;  //15 is now 14
+    })
 			//Define sort order flag
 			var sortOrder = false;
 			
